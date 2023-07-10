@@ -1,41 +1,57 @@
+import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 public class StudentTest {
-    @Test
-    public void testCreateStudent(){
-        Student fer = new Student(1L, "fer");
-        Student ryan = null;
-        assertNull(ryan);
-        assertNotNull(fer);
+    Student st1;
+    Student st2;
+    @Before
+    public void setUp(){
+        st1 = new Student(1, "Bobby");
+        st2 = new Student(2, "Randy");
     }
 
     @Test
-    public void testStudentFields(){
-        Student fer = new Student(1L, "fer");
-        assertSame(1L, fer.getId());
-        assertSame("fer", fer.getName());
-        assertSame(0, fer.getGrades().size());
+    public void setupCheck(){
+        assertNotNull(st1);
+        assertNotNull(st2);
     }
 
+    @Test
+    public void getTestId(){
+        assertEquals(1, st1.getId());
+        assertEquals(2, st2.getId());
+    }
+
+    @Test
+    public void testGetName(){
+        assertEquals("Bobby", st1.getName());
+        assertEquals("Randy", st2.getName());
+    }
+
+    @Test
+    public void testGetGrades(){
+        assertEquals(0, st1.getGrades().size());
+        assertEquals(0, st2.getGrades().size());
+    }
 
     @Test
     public void testAddGrade(){
-        Student fer = new Student(1L, "fer");
-        fer.addGrade(100);
-        assertSame(100, fer.getGrades().get(0));
-        fer.addGrade(80);
-        assertSame(80, fer.getGrades().get(1));
+        assertEquals(0, st1.getGrades().size());
+        st1.addGrade(99);
+        assertEquals(1, st1.getGrades().size());
+        assertEquals(0, st2.getGrades().size());
     }
 
     @Test
-    public void testAverageGrade(){
-        Student fer = new Student(1L, "fer");
-        fer.addGrade(100);
-        fer.addGrade(80);
-        assertEquals(90, fer.getGradeAverage(), 0);
+    public void testGetGradeAverage(){
+        st1.addGrade(100);
+        st1.addGrade(100);
+        st1.addGrade(100);
+        assertEquals(100.00, st1.getGradeAverage(), 0);
+        st2.addGrade(100);
+        assertEquals(100.0, st2.getGradeAverage(), 0);
+
     }
 }
