@@ -51,6 +51,7 @@ public class StudentTest {
         st1.addGrade(100);
         assertEquals(100.00, st1.getGradeAverage(), 0);
         st2.addGrade(100);
+        st2.addGrade(100);
         assertEquals(100.0, st2.getGradeAverage(), 0);
 
     }
