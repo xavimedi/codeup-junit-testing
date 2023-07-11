@@ -2,7 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class StudentTest {
+public class StudentTest{
     Student st1;
     Student st2;
     @Before
